@@ -24,30 +24,26 @@ class EndpointTest extends TestCase
      */
     public function test_turbine_endpoints_return_successful_responses()
     {
+        $turbineId = 1;
+        $componentId = 1;
+        $inspectionId = 1;
 
-//        Route::get('/turbines', 'index');
-//        Route::get('/turbines/{turbineId}', 'index');
-//        Route::get('/turbines/{turbineId}/components', 'components');
-//        Route::get('/turbines/{turbineId}/components/{componentId}', 'components');
-//        Route::get('/turbines/{turbineId}/inspections', 'inspections');
-//        Route::get('/turbines/{turbineId}/inspections/{inspectionId}', 'inspections');
-
-        $response = $this->get('/');
+        $response = $this->get('/turbines');
         $response->assertStatus(200);
 
-        $response = $this->get('/');
+        $response = $this->get('/turbines/' . $turbineId);
         $response->assertStatus(200);
 
-        $response = $this->get('/');
+        $response = $this->get('/turbines/' . $turbineId . '/components');
         $response->assertStatus(200);
 
-        $response = $this->get('/');
+        $response = $this->get('/turbines/' . $turbineId . '/components/' . $componentId);
         $response->assertStatus(200);
 
-        $response = $this->get('/');
+        $response = $this->get('/turbines/' . $turbineId . '/inspections');
         $response->assertStatus(200);
 
-        $response = $this->get('/');
+        $response = $this->get('/turbines/' . $turbineId . '/inspections/' . $inspectionId);
         $response->assertStatus(200);
     }
 
