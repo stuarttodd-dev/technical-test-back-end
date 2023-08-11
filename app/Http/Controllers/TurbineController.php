@@ -13,6 +13,8 @@ class TurbineController extends Controller
     {
         $data = $action($turbineId);
 
+        dd($data);
+
         return response()->json($data, 400);
     }
 
