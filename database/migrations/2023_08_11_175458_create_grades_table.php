@@ -4,6 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\Inspection;
+use App\Models\Component;
+use App\Models\GradeType;
+
 return new class extends Migration
 {
     /**
@@ -15,6 +19,9 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Inspection::class);
+            $table->foreignIdFor(Component::class);
+            $table->foreignIdFor(GradeType::class);
             $table->timestamps();
         });
     }
