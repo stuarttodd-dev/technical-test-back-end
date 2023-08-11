@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\ComponentType;
+use App\Models\Turbine;
+
 return new class extends Migration
 {
     /**
@@ -15,6 +18,8 @@ return new class extends Migration
     {
         Schema::create('components', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(ComponentType::class);
+            $table->foreignIdFor(Turbine::class);
             $table->timestamps();
         });
     }
