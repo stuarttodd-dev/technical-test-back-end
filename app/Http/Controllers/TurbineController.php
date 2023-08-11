@@ -12,24 +12,19 @@ class TurbineController extends Controller
     public function index(GetTurbines $action, ?int $turbineId = null): JsonResponse
     {
         $data = $action($turbineId);
-
-        dd($data);
-
-        return response()->json($data, 400);
+        return response()->json($data, $data->count() ? 200 : 400);
     }
 
     public function components(GetTurbineComponents $action, int $turbineId, ?int $componentId = null): JsonResponse
     {
         $data = $action($turbineId, $componentId);
-
-        return response()->json($data, 200);
+        return response()->json($data, $data->count() ? 200 : 400);
     }
 
     public function inspections(GetTurbineInspections $action, int $turbineId, ?int $inspectionId = null): JsonResponse
     {
         $data = $action($turbineId, $inspectionId);
-
-        return response()->json($data, 200);
+        return response()->json($data, $data->count() ? 200 : 400);
     }
 
 }

@@ -11,15 +11,14 @@ class ComponentsTypesController extends Controller
     public function index(GetFarms $action, ?int $farmId = null): JsonResponse
     {
         $data = $action($farmId);
+        return response()->json($data, $data->count() ? 200 : 400);
 
-        return response()->json($data, 400);
     }
 
     public function turbines(GetFarmTurbines $action, int $farmId, ?int $turbineId = null): JsonResponse
     {
         $data = $action($farmId, $turbineId);
-
-        return response()->json($data, 400);
+        return response()->json($data, $data->count() ? 200 : 400);
     }
 
 }

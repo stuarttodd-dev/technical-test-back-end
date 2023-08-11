@@ -10,8 +10,7 @@ class GradesController extends Controller
     public function index(GetGrades $action, ?int $gradeId = null): JsonResponse
     {
         $data = $action($gradeId);
-
-        return response()->json($data, 400);
+        return response()->json($data, $data->count() ? 200 : 400);
     }
 
 }

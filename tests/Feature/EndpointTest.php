@@ -2,13 +2,21 @@
 
 namespace Tests\Feature;
 
+use App\Models\Inspection;
 use App\Models\Turbine;
+use App\Models\GradeType;
+use App\Models\Grade;
+use App\Models\Component;
+use App\Models\ComponentType;
+use App\Models\Farm;
+
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class EndpointTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, DatabaseMigrations;
 
     public function setUp(): void
     {
@@ -24,9 +32,14 @@ class EndpointTest extends TestCase
      */
     public function test_turbine_endpoints_return_successful_responses()
     {
-        $turbineId = 1;
-        $componentId = 1;
-        $inspectionId = 1;
+        $turbine = Turbine::with('components', 'inspections')
+            ->has('components')
+            ->has('inspections')
+            ->first();
+
+        $turbineId = $turbine->id;
+        $componentId = $turbine->components->first()->id;
+        $inspectionId = $turbine->inspections->first()->id;
 
         $response = $this->get('/api/turbines');
         $response->assertStatus(200);
@@ -49,8 +62,12 @@ class EndpointTest extends TestCase
 
     public function test_inspection_endpoints_return_successful_responses()
     {
-        $inspectionId = 1;
-        $gradeId = 1;
+        $inspection = Inspection::with('grades')
+            ->has('grades')
+            ->first();
+
+        $inspectionId = $inspection->id;
+        $gradeId = $inspection->grades->first()->id;
 
         $response = $this->get('/api/inspections/' . $inspectionId . '/grades');
         $response->assertStatus(200);
@@ -61,7 +78,8 @@ class EndpointTest extends TestCase
 
     public function test_grade_type_endpoints_return_successful_responses()
     {
-        $gradeTypeId = 1;
+        $gradeType = GradeType::first();
+        $gradeTypeId = $gradeType->id;
 
         $response = $this->get('/api/grade-types');
         $response->assertStatus(200);
@@ -72,7 +90,8 @@ class EndpointTest extends TestCase
 
     public function test_grade_endpoints_return_successful_responses()
     {
-        $gradeId = 1;
+        $grade = Grade::first();
+        $gradeId = $grade->id;
 
         $response = $this->get('/api/grades');
         $response->assertStatus(200);
@@ -83,8 +102,12 @@ class EndpointTest extends TestCase
 
     public function test_farm_endpoints_return_successful_responses()
     {
-        $farmId = 1;
-        $turbineId = 1;
+        $farm = Farm::with('turbines')
+            ->has('turbines')
+            ->first();
+
+        $farmId = $farm->id;
+        $turbineId = $farm->turbines->first()->id;
 
         $response = $this->get('/api/farms');
         $response->assertStatus(200);
@@ -101,7 +124,8 @@ class EndpointTest extends TestCase
 
     public function test_component_types_endpoints_return_successful_responses()
     {
-        $componentTypeId = 1;
+        $componentType = ComponentType::first();
+        $componentTypeId = $componentType->id;
 
         $response = $this->get('/api/component-types');
         $response->assertStatus(200);
@@ -112,8 +136,12 @@ class EndpointTest extends TestCase
 
     public function test_component_endpoints_return_successful_responses()
     {
-        $componentId = 1;
-        $gradeId = 1;
+        $component = Component::with('grades')
+            ->has('grades')
+            ->first();
+
+        $componentId = $component->id;
+        $gradeId = $component->grades->first()->id;
 
         $response = $this->get('/api/components');
         $response->assertStatus(200);

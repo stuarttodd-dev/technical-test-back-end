@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\GetFarms;
-use App\Actions\GetFarmTurbines;
+use App\Actions\GetComponentGrades;
+use App\Actions\GetComponents;
 use Illuminate\Http\JsonResponse;
 
 class ComponentsController extends Controller
 {
-    public function index(GetFarms $action, ?int $farmId = null): JsonResponse
+    public function index(GetComponents $action, ?int $componentId = null): JsonResponse
     {
-        $data = $action($farmId);
-
-        return response()->json($data, 400);
+        $data = $action($componentId);
+        return response()->json($data, $data->count() ? 200 : 400);
     }
 
-    public function turbines(GetFarmTurbines $action, int $farmId, ?int $turbineId = null): JsonResponse
+    public function grades(GetComponentGrades $action, int $componentId, ?int $gradeId = null): JsonResponse
     {
-        $data = $action($farmId, $turbineId);
-
-        return response()->json($data, 400);
+        $data = $action($componentId, $gradeId);
+        return response()->json($data, $data->count() ? 200 : 400);
     }
 
 }
