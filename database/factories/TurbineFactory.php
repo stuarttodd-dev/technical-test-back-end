@@ -17,7 +17,10 @@ class TurbineFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->company() . ' Turbine',
+            'farm_id' => $this->faker->numberBetween(1, 10),
+            'lat' => $this->faker->latitude(),
+            'lng' => $this->faker->longitude(),
         ];
     }
 }

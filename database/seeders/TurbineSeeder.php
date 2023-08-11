@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Turbine;
 use Illuminate\Database\Seeder;
 
 class TurbineSeeder extends Seeder
@@ -14,6 +14,6 @@ class TurbineSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Turbine::factory()->count(100)->create();
     }
 }

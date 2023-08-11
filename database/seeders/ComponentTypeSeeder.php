@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\ComponentType;
 use Illuminate\Database\Seeder;
+
+use App\Enums\ComponentType as ComponentTypeEnum;
 
 class ComponentTypeSeeder extends Seeder
 {
@@ -14,6 +16,18 @@ class ComponentTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+
+        $components = [
+            ComponentTypeEnum::BLADE->value,
+            ComponentTypeEnum::GENERATOR->value,
+            ComponentTypeEnum::HUB->value,
+            ComponentTypeEnum::ROTOR->value,
+        ];
+
+        foreach ($components as $component) {
+            ComponentType::factory()->create([
+                'name' => $component
+            ]);
+        }
     }
 }

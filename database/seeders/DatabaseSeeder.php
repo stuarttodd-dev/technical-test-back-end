@@ -21,5 +21,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            FarmSeeder::class,
+            TurbineSeeder::class,
+            ComponentTypeSeeder::class,
+            ComponentSeeder::class,
+            InspectionSeeder::class,
+            GradeTypeSeeder::class,
+            GradeSeeder::class,
+        ]);
     }
 }

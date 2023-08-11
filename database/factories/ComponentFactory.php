@@ -17,7 +17,8 @@ class ComponentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'component_type_id' => $this->faker->numberBetween(1, 4),
+            'turbine_id' => $this->faker->numberBetween(1, 100),
         ];
     }
 }

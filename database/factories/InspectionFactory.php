@@ -17,7 +17,8 @@ class InspectionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'turbine_id' => $this->faker->numberBetween(1, 100),
+            'inspected_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }

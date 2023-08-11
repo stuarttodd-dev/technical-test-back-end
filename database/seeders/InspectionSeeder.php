@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+use App\Models\Inspection;
 
 class InspectionSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class InspectionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Inspection::factory()->count(200)->create();
     }
 }

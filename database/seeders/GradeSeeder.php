@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
+use App\Models\Grade;
 
 class GradeSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class GradeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Grade::factory()->count(200)->create();
     }
 }
