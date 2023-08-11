@@ -12,5 +12,7 @@ class GradeType extends Model
     protected $fillable = [
         'level',
         'name',
+        'created_at',
+        'updated_at',
     ];
 }

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('inspections', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Turbine::class);
+            $table->timestamp('inspected_at');
             $table->timestamps();
         });
     }
