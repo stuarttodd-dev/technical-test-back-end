@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ComponentsController;
-use app\Http\Controllers\ComponentsTypesController;
+use App\Http\Controllers\ComponentsTypesController;
 use App\Http\Controllers\FarmController;
-use app\Http\Controllers\GradesController;
-use app\Http\Controllers\GradeTypesController;
-use app\Http\Controllers\InspectionsController;
+use App\Http\Controllers\GradesController;
+use App\Http\Controllers\GradeTypesController;
+use App\Http\Controllers\InspectionsController;
 use App\Http\Controllers\TurbineController;
 
 Route::controller(ComponentsController::class)->group(function () {

@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
-use app\Actions\GetInspectionGrades;
+use App\Actions\GetInspectionGrades;
 use Illuminate\Http\JsonResponse;
 
 class InspectionsController extends Controller
@@ -11,7 +11,7 @@ class InspectionsController extends Controller
     {
         $data = $action($inspectionId, $gradeId);
 
-        return response()->json($data, 200);
+        return response()->json($data, 400);
     }
 
 }

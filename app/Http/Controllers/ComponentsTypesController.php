@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
-use app\Actions\GetFarms;
-use app\Actions\GetFarmTurbines;
+use App\Actions\GetFarms;
+use App\Actions\GetFarmTurbines;
 use Illuminate\Http\JsonResponse;
 
 class ComponentsTypesController extends Controller
@@ -12,14 +12,14 @@ class ComponentsTypesController extends Controller
     {
         $data = $action($farmId);
 
-        return response()->json($data, 200);
+        return response()->json($data, 400);
     }
 
     public function turbines(GetFarmTurbines $action, int $farmId, ?int $turbineId = null): JsonResponse
     {
         $data = $action($farmId, $turbineId);
 
-        return response()->json($data, 200);
+        return response()->json($data, 400);
     }
 
 }

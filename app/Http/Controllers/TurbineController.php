@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
-use app\Actions\GetTurbineComponents;
-use app\Actions\GetTurbineInspections;
-use app\Actions\GetTurbines;
+use App\Actions\GetTurbineComponents;
+use App\Actions\GetTurbineInspections;
+use App\Actions\GetTurbines;
 use Illuminate\Http\JsonResponse;
 
 class TurbineController extends Controller
@@ -13,7 +13,7 @@ class TurbineController extends Controller
     {
         $data = $action($turbineId);
 
-        return response()->json($data, 200);
+        return response()->json($data, 400);
     }
 
     public function components(GetTurbineComponents $action, int $turbineId, ?int $componentId = null): JsonResponse

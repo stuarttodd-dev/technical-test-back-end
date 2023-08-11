@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers;
 
-use app\Actions\GetGradeTypes;
+use App\Actions\GetGradeTypes;
 use Illuminate\Http\JsonResponse;
 
 class GradeTypesController extends Controller
@@ -11,7 +11,7 @@ class GradeTypesController extends Controller
     {
         $data = $action($gradeTypeId);
 
-        return response()->json($data, 200);
+        return response()->json($data, 400);
     }
 
 }
