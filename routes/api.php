@@ -13,8 +13,8 @@ use App\Http\Controllers\TurbineController;
 Route::controller(ComponentsController::class)->group(function () {
     Route::get('/components', 'index');
     Route::get('/components/{componentId}', 'index');
-    Route::get('/components/{i}/grades', 'grades');
-    Route::get('/components/{i}/grades/{gradeId}', 'grades');
+    Route::get('/components/{componentId}/grades', 'grades');
+    Route::get('/components/{componentId}/grades/{gradeId}', 'grades');
 });
 
 Route::controller(ComponentsTypesController::class)->group(function () {

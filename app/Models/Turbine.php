@@ -24,4 +24,5 @@ class Turbine extends Model
     {
         return $this->belongsTo(Farm::class);
     }
+
 }
