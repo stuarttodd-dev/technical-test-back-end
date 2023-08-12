@@ -87,4 +87,4 @@ This is a place for you to add your notes, plans, thinking and any feedback you 
 
 - With more time, API auth using Sanctum. 
 - I'd improve tests and test against custom exceptions.
-- Could potentially add a repository class per model but it felt like overkill with the Action classes.
+- Could potentially add a repository class per model but it felt like overkill with the Action classes and ORM.
