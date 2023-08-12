@@ -93,6 +93,7 @@ composer install --ignore-platform-reqs
 ### Sanctum
 - Added Auth capability (see AuthController)
 - login, register and logout routes
+- Endpoints have been validated with Request classes
 - Can be tested against the /api/stu route.
 - Didn't protect the API routes as to not break the frontend
 
@@ -107,3 +108,4 @@ composer install --ignore-platform-reqs
 - I'd improve tests and test against custom exceptions.
 - Could add Model scopes to clean up the Action classes.
 - Could potentially add a repository class per model but it felt like overkill with the Action classes and ORM.
+- Add CRUD with validation (Request classes)
