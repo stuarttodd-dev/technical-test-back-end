@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Actions\GetGrades;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 
 class GradesController extends Controller
 {
-    public function index(GetGrades $action, ?int $gradeId = null): JsonResponse
+    public function index(GetGrades $action, ?int $gradeId = null): Collection
     {
-        $data = $action($gradeId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($gradeId);
     }
 
 }

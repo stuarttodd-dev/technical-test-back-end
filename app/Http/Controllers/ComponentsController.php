@@ -4,20 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetComponentGrades;
 use App\Actions\GetComponents;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 
 class ComponentsController extends Controller
 {
-    public function index(GetComponents $action, ?int $componentId = null): JsonResponse
+    public function index(GetComponents $action, ?int $componentId = null): Collection
     {
-        $data = $action($componentId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($componentId);
     }
 
-    public function grades(GetComponentGrades $action, int $componentId, ?int $gradeId = null): JsonResponse
+    public function grades(GetComponentGrades $action, int $componentId, ?int $gradeId = null): Collection
     {
-        $data = $action($componentId, $gradeId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($componentId, $gradeId);
     }
 
 }

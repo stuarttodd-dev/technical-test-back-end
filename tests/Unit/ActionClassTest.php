@@ -43,7 +43,7 @@ class ActionClassTest extends TestCase
     {
         $action = new GetComponentGrades;
 
-        $grade = Grade::first();
+        $grade = Grade::has('component')->first();
         $componentId = $grade->component_id;
 
         $componentGrades = Grade::where('component_id', $componentId)
@@ -140,7 +140,7 @@ class ActionClassTest extends TestCase
     {
         $action = new GetFarmTurbines;
 
-        $turbine = Turbine::first();
+        $turbine = Turbine::has('farm')->first();
         $farmId = $turbine->farm_id;
 
         $farmTurbines = Turbine::where('farm_id', $farmId)
@@ -217,7 +217,7 @@ class ActionClassTest extends TestCase
     {
         $action = new GetInspectionGrades;
 
-        $inspectionGrade = Grade::first();
+        $inspectionGrade = Grade::has('inspection')->first();
         $inspectionId = $inspectionGrade->inspection_id;
 
         $inspectionGrades = Grade::where('inspection_id', $inspectionId)
@@ -269,7 +269,7 @@ class ActionClassTest extends TestCase
     {
         $action = new GetTurbineComponents;
 
-        $component = Component::first();
+        $component = Component::has('turbine')->first();
         $turbineId = $component->turbine_id;
 
         $turbineComponents = Component::where('turbine_id', $turbineId)
@@ -295,7 +295,8 @@ class ActionClassTest extends TestCase
     {
         $action = new GetTurbineInspections;
 
-        $tubrineId = 1;
+        $turbine = Turbine::has('inspections')->first();
+        $tubrineId = $turbine->id;
 
         $turbineInspections = Inspection::where('turbine_id', $tubrineId)
             ->get();

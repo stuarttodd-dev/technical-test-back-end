@@ -5,26 +5,23 @@ namespace App\Http\Controllers;
 use App\Actions\GetTurbineComponents;
 use App\Actions\GetTurbineInspections;
 use App\Actions\GetTurbines;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 
 class TurbineController extends Controller
 {
-    public function index(GetTurbines $action, ?int $turbineId = null): JsonResponse
+    public function index(GetTurbines $action, ?int $turbineId = null): Collection
     {
-        $data = $action($turbineId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($turbineId);
     }
 
-    public function components(GetTurbineComponents $action, int $turbineId, ?int $componentId = null): JsonResponse
+    public function components(GetTurbineComponents $action, int $turbineId, ?int $componentId = null): Collection
     {
-        $data = $action($turbineId, $componentId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($turbineId, $componentId);
     }
 
-    public function inspections(GetTurbineInspections $action, int $turbineId, ?int $inspectionId = null): JsonResponse
+    public function inspections(GetTurbineInspections $action, int $turbineId, ?int $inspectionId = null): Collection
     {
-        $data = $action($turbineId, $inspectionId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($turbineId, $inspectionId);
     }
 
 }

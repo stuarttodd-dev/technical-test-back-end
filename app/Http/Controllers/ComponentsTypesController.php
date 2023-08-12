@@ -4,21 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetFarms;
 use App\Actions\GetFarmTurbines;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 
 class ComponentsTypesController extends Controller
 {
-    public function index(GetFarms $action, ?int $farmId = null): JsonResponse
+    public function index(GetFarms $action, ?int $farmId = null): Collection
     {
-        $data = $action($farmId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($farmId);
 
     }
 
-    public function turbines(GetFarmTurbines $action, int $farmId, ?int $turbineId = null): JsonResponse
+    public function turbines(GetFarmTurbines $action, int $farmId, ?int $turbineId = null): Collection
     {
-        $data = $action($farmId, $turbineId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($farmId, $turbineId);
     }
 
 }

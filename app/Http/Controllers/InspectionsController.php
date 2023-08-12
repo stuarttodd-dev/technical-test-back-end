@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Actions\GetInspectionGrades;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 
 class InspectionsController extends Controller
 {
-    public function index(GetInspectionGrades $action, int $inspectionId, ?int $gradeId = null): JsonResponse
+    public function index(GetInspectionGrades $action, int $inspectionId, ?int $gradeId = null): Collection
     {
-        $data = $action($inspectionId, $gradeId);
-        return response()->json($data, $data->count() ? 200 : 400);
+        return $action($inspectionId, $gradeId);
     }
 
 }
