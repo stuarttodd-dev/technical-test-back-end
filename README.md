@@ -82,6 +82,7 @@ This is a place for you to add your notes, plans, thinking and any feedback you 
 - Added Seeders and Factories
 - Added Routes
 - Added Controllers
+- Added Models
 - Used JsonResource to build API responses.
 - And... thats it!
 
