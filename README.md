@@ -85,7 +85,8 @@ This is a place for you to add your notes, plans, thinking and any feedback you 
 - Added Models
 - Used JsonResource to build API responses.
 - And... thats it!
-
+-
 - With more time, API auth using Sanctum. 
 - I'd improve tests and test against custom exceptions.
+- Could add Model scopes to clean up the Action classes.
 - Could potentially add a repository class per model but it felt like overkill with the Action classes and ORM.
