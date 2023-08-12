@@ -51,9 +51,9 @@ As mentioned above we have chosen to make use of Laravel Sail as the foundation 
         - We've already changed mysql to 33060 and NGINX to 81 for you
 - It should now be time to [start Sail](https://laravel.com/docs/8.x/sail#starting-and-stopping-sail) and the task
 - There is a file in the root of this project called `api-spec.yaml` this can be imported into your application of choice to ensure you're building your application to the spec that we're expecting. Some notable applications are:
-  - Postman
-  - Swagger
-  - StopLight
+    - Postman
+    - Swagger
+    - StopLight
 
 
 ### Installing Composer Dependencies
@@ -69,24 +69,41 @@ composer install --ignore-platform-reqs
 
 ### Quick Tips
 - Don't run npm/composer from your host, always run it via the sail command
-  - This is because the docker container may not be able to write to the filesystem after you do so
+    - This is because the docker container may not be able to write to the filesystem after you do so
 - Ensure you have a valid .env file before starting sail for the first time.
-  - Sail creates a docker volume which is persistent, so stopping/starting sail will not affect/fix issues in a volume (missing DB etc)
+    - Sail creates a docker volume which is persistent, so stopping/starting sail will not affect/fix issues in a volume (missing DB etc)
 
 ## Your Notes
-This is a place for you to add your notes, plans, thinking and any feedback you have for us of the task, please feel free to include whatever you like here, we'll make sure to read it. 
 
-- Decided to encapsulate the API data fetching operations into Action classes. Mainly for code re-usability and ease of testing.
-- Added Feature and Unit tests
-- Added Migrations
-- Added Seeders and Factories
-- Added Routes
-- Added Controllers
-- Added Models
-- Used JsonResource to build API responses.
-- And... thats it!
--
-- With more time, API auth using Sanctum. 
+### Action Classes
+- Decided to encapsulate the API data fetching operations into Action classes. 
+- Mainly for code re-usability and ease of testing.
+
+### Additions
+- Feature and Unit tests
+- Migrations
+- Seeders
+- Factories
+- Routes
+- Controllers
+- Models
+- Resources
+- Traits
+
+### Sanctum
+- Added Auth capability (see AuthController)
+- login, register and logout routes
+- Can be tested against the /api/stu route.
+- Didn't protected the API routes as to not break the frontend
+
+### Postman Screenshots
+![Endpoint 1](endpoints1.png "Endpoint 1")
+![Endpoint 2](endpoints2.png "Endpoint 2")
+![Endpoint 3](endpoints3.png "Endpoint 3")
+![Endpoint 4](endpoints4.png "Endpoint 4")
+![Endpoint 5](endpoints5.png "Endpoint 5")
+
+### Possible improvements
 - I'd improve tests and test against custom exceptions.
 - Could add Model scopes to clean up the Action classes.
 - Could potentially add a repository class per model but it felt like overkill with the Action classes and ORM.
