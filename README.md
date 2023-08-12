@@ -106,7 +106,7 @@ composer install --ignore-platform-reqs
 
 ### App Screenshots
 ![Frontend 1](frontend1.png "Frontend 1")
-![Frontend 2](frontend2.png "Frontend 2")
+![Frontend 2](frontend22.png "Frontend 2")
 ![Frontend 3](frontend3.png "Frontend 3")
 
 ### Possible improvements
