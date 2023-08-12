@@ -53,7 +53,7 @@ const Inspections = props => {
                 {data.map(inspection => (
                     <tr key={inspection.id}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{inspection.inspected_at}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{inspection.turbine !== null ? inspection.turbine.name : 'loading'}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{inspection.turbine !== undefined ? inspection.turbine.name : 'loading'}</td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                             <Link to={`/inspections/${inspection.id}`} className="text-indigo-600 hover:text-indigo-900">
                                 View<span className="sr-only">, {inspection.name}</span>

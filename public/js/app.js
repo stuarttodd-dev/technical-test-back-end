@@ -3032,7 +3032,7 @@ var Inspections = function Inspections(props) {
               children: inspection.inspected_at
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
               className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500",
-              children: inspection.turbine !== null ? inspection.turbine.name : 'loading'
+              children: inspection.turbine !== undefined ? inspection.turbine.name : 'loading'
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
               className: "relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {

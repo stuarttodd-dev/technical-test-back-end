@@ -104,6 +104,11 @@ composer install --ignore-platform-reqs
 ![Endpoint 4](endpoints4.png "Endpoint 4")
 ![Endpoint 5](endpoints5.png "Endpoint 5")
 
+### App Screenshots
+![Frontend 1](frontend1.png "Frontend 1")
+![Frontend 2](frontend2.png "Frontend 2")
+![Frontend 3](frontend3.png "Frontend 3")
+
 ### Possible improvements
 - I'd improve tests and test against custom exceptions.
 - Could add Model scopes to clean up the Action classes.
