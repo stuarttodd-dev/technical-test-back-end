@@ -2,20 +2,20 @@
 
 namespace App\Actions;
 
+use App\Models\Farm;
 use Illuminate\Support\Collection;
 
 class GetFarms
 {
     public function __invoke(?int $farmId = null): Collection
     {
-        return collect(['some', 'data']);
+        if (!empty($farmId)) {
+            $data = Farm::find($farmId);
+        } else {
+            $data = Farm::all();
+        }
 
-        //        {
-        //            "id": 0,
-        //  "name": "string",
-        //  "created_at": "2023-08-11T16:17:32.021Z",
-        //  "updated_at": "2023-08-11T16:17:32.021Z"
-        //}
+        return collect($data);
     }
 
 }

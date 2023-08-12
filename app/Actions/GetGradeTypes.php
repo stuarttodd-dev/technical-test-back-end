@@ -2,20 +2,20 @@
 
 namespace App\Actions;
 
+use App\Models\GradeType;
 use Illuminate\Support\Collection;
 
 class GetGradeTypes
 {
     public function __invoke(?int $gradeTypeId = null): Collection
     {
-        return collect(['some', 'data']);
+        if (!empty($gradeTypeId)) {
+            $data = GradeType::find($gradeTypeId);
+        } else {
+            $data = GradeType::all();
+        }
 
-        //        {
-        //            "id": 0,
-        //  "name": "string",
-        //  "created_at": "2023-08-11T16:17:32.021Z",
-        //  "updated_at": "2023-08-11T16:17:32.021Z"
-        //}
+        return collect($data);
     }
 
 }

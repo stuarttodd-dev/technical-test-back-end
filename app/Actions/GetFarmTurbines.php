@@ -2,23 +2,23 @@
 
 namespace App\Actions;
 
+use App\Models\Turbine;
 use Illuminate\Support\Collection;
 
 class GetFarmTurbines
 {
-    public function __invoke(int $farmId = 0, ?int $turbineId = null): Collection
+    public function __invoke(int $farmId, ?int $turbineId = null): Collection
     {
-        return collect(['some', 'data']);
+        if (!empty($turbineId)) {
+            $data = Turbine::where('farm_id', $farmId)
+                ->where('id', $turbineId)
+                ->first();
+        } else {
+            $data = Turbine::where('farm_id', $farmId)
+                ->get();
+        }
 
-//        {
-//                    "id": 0,
-//          "name": "string",
-//          "farm_id": 0,
-//          "lat": 0,
-//          "lng": 0,
-//          "created_at": "2023-08-11T16:19:28.386Z",
-//          "updated_at": "2023-08-11T16:19:28.386Z"
-//        }
+        return collect($data);
     }
 
 }
