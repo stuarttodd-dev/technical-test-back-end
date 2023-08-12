@@ -9,7 +9,21 @@ use App\Http\Controllers\GradesController;
 use App\Http\Controllers\GradeTypesController;
 use App\Http\Controllers\InspectionsController;
 use App\Http\Controllers\TurbineController;
+use App\Http\Controllers\AuthController;
 
+// Public routes
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// Protected routes
+Route::middleware('auth:sanctum')->group(function() {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/stu', function() {
+        return 'Hello there';
+    });
+});
+
+// These would be protected...
 Route::controller(ComponentsController::class)->group(function () {
     Route::get('/components', 'index');
     Route::get('/components/{componentId}', 'index');
@@ -54,4 +68,3 @@ Route::controller(TurbineController::class)->group(function () {
     Route::get('/turbines/{turbineId}/inspections', 'inspections');
     Route::get('/turbines/{turbineId}/inspections/{inspectionId}', 'inspections');
 });
-
