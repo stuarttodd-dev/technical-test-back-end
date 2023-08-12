@@ -5,17 +5,31 @@ namespace App\Http\Controllers;
 use App\Actions\GetFarms;
 use App\Actions\GetFarmTurbines;
 use App\Http\Resources\ApiResource;
+use Illuminate\Http\JsonResponse;
+use App\Traits\HttpResponses;
 
 class FarmController extends Controller
 {
-    public function index(GetFarms $action, ?int $farmId = null): ApiResource
+    use HttpResponses;
+
+    public function index(GetFarms $action, ?int $farmId = null): JsonResponse
     {
-        return new ApiResource($action($farmId));
+        $data = new ApiResource($action($farmId));
+
+        return $this->success(
+            $data,
+            'Successfully queried API'
+        );
     }
 
-    public function turbines(GetFarmTurbines $action, int $farmId, ?int $turbineId = null): ApiResource
+    public function turbines(GetFarmTurbines $action, int $farmId, ?int $turbineId = null): JsonResponse
     {
-        return new ApiResource($action($farmId, $turbineId));
+        $data = new ApiResource($action($farmId, $turbineId));
+
+        return $this->success(
+            $data,
+            'Successfully queried API'
+        );
     }
 
 }

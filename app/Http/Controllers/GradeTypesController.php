@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetGradeTypes;
 use App\Http\Resources\ApiResource;
+use Illuminate\Http\JsonResponse;
+use App\Traits\HttpResponses;
 
 class GradeTypesController extends Controller
 {
-    public function index(GetGradeTypes $action, ?int $gradeTypeId = null): ApiResource
+    use HttpResponses;
+    public function index(GetGradeTypes $action, ?int $gradeTypeId = null): JsonResponse
     {
-        return new ApiResource($action($gradeTypeId));
+        $data = new ApiResource($action($gradeTypeId));
+
+        return $this->success(
+            $data,
+            'Successfully queried API'
+        );
     }
 
 }

@@ -5,17 +5,31 @@ namespace App\Http\Controllers;
 use App\Actions\GetComponentGrades;
 use App\Actions\GetComponents;
 use App\Http\Resources\ApiResource;
+use App\Traits\HttpResponses;
+use Illuminate\Http\JsonResponse;
 
 class ComponentsController extends Controller
 {
-    public function index(GetComponents $action, ?int $componentId = null): ApiResource
+    use HttpResponses;
+
+    public function index(GetComponents $action, ?int $componentId = null): JsonResponse
     {
-        return new ApiResource($action($componentId));
+        $data = new ApiResource($action($componentId));
+
+        return $this->success(
+            $data,
+            'Successfully queried API'
+        );
     }
 
-    public function grades(GetComponentGrades $action, int $componentId, ?int $gradeId = null): ApiResource
+    public function grades(GetComponentGrades $action, int $componentId, ?int $gradeId = null): JsonResponse
     {
-        return new ApiResource($action($componentId, $gradeId));
+        $data = new ApiResource($action($componentId, $gradeId));
+
+        return $this->success(
+            $data,
+            'Successfully queried API'
+        );
     }
 
 }

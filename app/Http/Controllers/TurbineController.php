@@ -6,22 +6,41 @@ use App\Actions\GetTurbineComponents;
 use App\Actions\GetTurbineInspections;
 use App\Actions\GetTurbines;
 use App\Http\Resources\ApiResource;
+use Illuminate\Http\JsonResponse;
+use App\Traits\HttpResponses;
 
 class TurbineController extends Controller
 {
-    public function index(GetTurbines $action, ?int $turbineId = null): ApiResource
+    use HttpResponses;
+
+    public function index(GetTurbines $action, ?int $turbineId = null): JsonResponse
     {
-        return new ApiResource($action($turbineId));
+        $data = new ApiResource($action($turbineId));
+
+        return $this->success(
+            $data,
+            'Successfully queried API'
+        );
     }
 
-    public function components(GetTurbineComponents $action, int $turbineId, ?int $componentId = null): ApiResource
+    public function components(GetTurbineComponents $action, int $turbineId, ?int $componentId = null): JsonResponse
     {
-        return new ApiResource($action($turbineId, $componentId));
+        $data = new ApiResource($action($turbineId, $componentId));
+
+        return $this->success(
+            $data,
+            'Successfully queried API'
+        );
     }
 
-    public function inspections(GetTurbineInspections $action, int $turbineId, ?int $inspectionId = null): ApiResource
+    public function inspections(GetTurbineInspections $action, int $turbineId, ?int $inspectionId = null): JsonResponse
     {
-        return new ApiResource($action($turbineId, $inspectionId));
+        $data = new ApiResource($action($turbineId, $inspectionId));
+
+        return $this->success(
+            $data,
+            'Successfully queried API'
+        );
     }
 
 }
