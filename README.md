@@ -75,3 +75,16 @@ composer install --ignore-platform-reqs
 
 ## Your Notes
 This is a place for you to add your notes, plans, thinking and any feedback you have for us of the task, please feel free to include whatever you like here, we'll make sure to read it. 
+
+- Decided to encapsulate the API data fetching operations into Action classes. Mainly for code re-usability and ease of testing.
+- Added Feature and Unit tests
+- Added Migrations
+- Added Seeders and Factories
+- Added Routes
+- Added Controllers
+- Used JsonResource to build API responses.
+- And... thats it!
+
+- With more time, API auth using Sanctum. 
+- I'd improve tests and test against custom exceptions.
+- Could potentially add a repository class per model but it felt like overkill with the Action classes.
