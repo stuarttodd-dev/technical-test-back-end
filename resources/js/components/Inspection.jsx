@@ -70,7 +70,13 @@ const Inspection = () => {
     const data = useMemo(() => mergeData(), [grades, components, componentTypes]);
 
     if(inspectionsLoading) return <p>Loading...</p>;
-    if(inspectionsError) return <p>Error</p>;
+    if(inspectionsError || turbine === undefined || inspection === undefined ) return <p>Error</p>;
+
+
+    console.log('TURBINE', turbine);
+    console.log('INSPECTION', inspection);
+    console.log('COMPONENT', data);
+    console.log('GRADES', grades);
 
     return (
         <div className="">
@@ -91,7 +97,7 @@ const Inspection = () => {
                 {data.map(component => (
                     <tr key={component.id}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{component.name || component.component_type_id}</td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{component.grade !== null ? component.grade.name || component.grade.grade_type_id : 'loading'}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{component.grade !== undefined ? component.grade.name || component.grade.grade_type_id : 'loading'}</td>
                     </tr>
                 ))}
 

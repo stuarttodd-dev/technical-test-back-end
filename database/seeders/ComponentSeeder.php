@@ -15,6 +15,6 @@ class ComponentSeeder extends Seeder
      */
     public function run()
     {
-        Component::factory()->count(50)->create();
+        //Component::factory()->count(200)->create();
     }
 }

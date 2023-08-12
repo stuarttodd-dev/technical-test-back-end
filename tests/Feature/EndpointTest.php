@@ -69,6 +69,12 @@ class EndpointTest extends TestCase
         $inspectionId = $inspection->id;
         $gradeId = $inspection->grades->first()->id;
 
+        $response = $this->get('/api/inspections/');
+        $response->assertStatus(200);
+
+        $response = $this->get('/api/inspections/' . $inspectionId);
+        $response->assertStatus(200);
+
         $response = $this->get('/api/inspections/' . $inspectionId . '/grades');
         $response->assertStatus(200);
 

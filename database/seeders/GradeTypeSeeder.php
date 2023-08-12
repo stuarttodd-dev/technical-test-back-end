@@ -16,7 +16,7 @@ class GradeTypeSeeder extends Seeder
     {
         for ($gradeTypeId = 1; $gradeTypeId <= 5; $gradeTypeId++) {
             GradeType::factory()->create([
-                'level' => $gradeTypeId,
+                'name' => 'Level ' . $gradeTypeId . ' Grade'
             ]);
         }
     }

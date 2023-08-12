@@ -17,7 +17,6 @@ class GradeTypeFactory extends Factory
     public function definition()
     {
         return [
-            'level' => $this->faker->numberBetween(1, 5),
             'name' => $this->faker->jobTitle() . ' Grade',
         ];
     }

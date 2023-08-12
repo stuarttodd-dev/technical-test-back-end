@@ -204,7 +204,6 @@ class ActionClassTest extends TestCase
 
         $expectedKeys = [
             'id',
-            'level',
             'name',
             'created_at',
             'updated_at',

@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\GetFarms;
-use App\Actions\GetFarmTurbines;
-use Illuminate\Support\Collection;
+use App\Actions\GetComponentTypes;
+use App\Http\Resources\ApiResource;
 
 class ComponentsTypesController extends Controller
 {
-    public function index(GetFarms $action, ?int $farmId = null): Collection
+    public function index(GetComponentTypes $action, ?int $componentTypeId = null): ApiResource
     {
-        return $action($farmId);
+        return new ApiResource($action($componentTypeId));
 
-    }
-
-    public function turbines(GetFarmTurbines $action, int $farmId, ?int $turbineId = null): Collection
-    {
-        return $action($farmId, $turbineId);
     }
 
 }

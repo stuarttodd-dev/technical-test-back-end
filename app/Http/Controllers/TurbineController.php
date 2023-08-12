@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use App\Actions\GetTurbineComponents;
 use App\Actions\GetTurbineInspections;
 use App\Actions\GetTurbines;
-use Illuminate\Support\Collection;
+use App\Http\Resources\ApiResource;
 
 class TurbineController extends Controller
 {
-    public function index(GetTurbines $action, ?int $turbineId = null): Collection
+    public function index(GetTurbines $action, ?int $turbineId = null): ApiResource
     {
-        return $action($turbineId);
+        return new ApiResource($action($turbineId));
     }
 
-    public function components(GetTurbineComponents $action, int $turbineId, ?int $componentId = null): Collection
+    public function components(GetTurbineComponents $action, int $turbineId, ?int $componentId = null): ApiResource
     {
-        return $action($turbineId, $componentId);
+        return new ApiResource($action($turbineId, $componentId));
     }
 
-    public function inspections(GetTurbineInspections $action, int $turbineId, ?int $inspectionId = null): Collection
+    public function inspections(GetTurbineInspections $action, int $turbineId, ?int $inspectionId = null): ApiResource
     {
-        return $action($turbineId, $inspectionId);
+        return new ApiResource($action($turbineId, $inspectionId));
     }
 
 }

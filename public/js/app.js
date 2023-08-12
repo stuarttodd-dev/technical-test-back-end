@@ -2871,9 +2871,13 @@ var Inspection = function Inspection() {
   if (inspectionsLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
     children: "Loading..."
   });
-  if (inspectionsError) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+  if (inspectionsError || turbine === undefined || inspection === undefined) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
     children: "Error"
   });
+  console.log('TURBINE', turbine);
+  console.log('INSPECTION', inspection);
+  console.log('COMPONENT', data);
+  console.log('GRADES', grades);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h1", {
@@ -2903,7 +2907,7 @@ var Inspection = function Inspection() {
               children: component.name || component.component_type_id
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
               className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500",
-              children: component.grade !== null ? component.grade.name || component.grade.grade_type_id : 'loading'
+              children: component.grade !== undefined ? component.grade.name || component.grade.grade_type_id : 'loading'
             })]
           }, component.id);
         })

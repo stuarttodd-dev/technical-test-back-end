@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Actions\GetInspectionGrades;
-use Illuminate\Support\Collection;
+use App\Actions\GetInspections;
+use App\Http\Resources\ApiResource;
 
 class InspectionsController extends Controller
 {
-    public function index(GetInspectionGrades $action, int $inspectionId, ?int $gradeId = null): Collection
+    public function index(GetInspections $action, ?int $inspectionId = null): ApiResource
     {
-        return $action($inspectionId, $gradeId);
+        return new ApiResource($action($inspectionId));
+    }
+
+    public function grades(GetInspectionGrades $action, int $inspectionId, ?int $gradeId = null): ApiResource
+    {
+        return new ApiResource($action($inspectionId, $gradeId));
     }
 
 }

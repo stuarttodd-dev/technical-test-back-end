@@ -25,10 +25,36 @@ class DatabaseSeeder extends Seeder
             FarmSeeder::class,
             TurbineSeeder::class,
             ComponentTypeSeeder::class,
-            ComponentSeeder::class,
-            InspectionSeeder::class,
             GradeTypeSeeder::class,
-            GradeSeeder::class,
         ]);
+
+        $components = [];
+
+        for ($turbineId = 1; $turbineId <= 500; $turbineId++) {
+
+            $componentTypes = [1, 2, 3, 4];
+
+            Inspection::factory()->create([
+                'turbine_id' => $turbineId,
+            ]);
+
+            foreach ($componentTypes as $componentTypeId) {
+
+                    $component = Component::factory()->create([
+                        'component_type_id' => $componentTypeId,
+                        'turbine_id' => $turbineId,
+                    ]);
+                    $components[$component->id] = $turbineId;
+            }
+        }
+
+        foreach ($components as $componentId => $turbineId) {
+
+            Grade::factory()->create([
+                'component_id' => $componentId,
+                'inspection_id' => $turbineId
+            ]);
+        }
+
     }
 }

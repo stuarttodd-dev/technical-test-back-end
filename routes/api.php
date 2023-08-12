@@ -40,8 +40,10 @@ Route::controller(GradeTypesController::class)->group(function () {
 });
 
 Route::controller(InspectionsController::class)->group(function () {
-    Route::get('/inspections/{inspectionId}/grades', 'index');
-    Route::get('/inspections/{inspectionId}/grades/{gradeId}', 'index');
+    Route::get('/inspections', 'index');
+    Route::get('/inspections/{inspectionId}', 'index');
+    Route::get('/inspections/{inspectionId}/grades', 'grades');
+    Route::get('/inspections/{inspectionId}/grades/{gradeId}', 'grades');
 });
 
 Route::controller(TurbineController::class)->group(function () {

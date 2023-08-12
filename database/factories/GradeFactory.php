@@ -17,8 +17,8 @@ class GradeFactory extends Factory
     public function definition()
     {
         return [
-            'inspection_id' => $this->faker->numberBetween(1, 200),
-            'component_id' => $this->faker->numberBetween(1, 50),
+            'inspection_id' => $this->faker->numberBetween(1, 500),
+            'component_id' => $this->faker->numberBetween(1, 500),
             'grade_type_id' => $this->faker->numberBetween(1, 5),
         ];
     }

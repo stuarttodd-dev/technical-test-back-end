@@ -15,6 +15,6 @@ class GradeSeeder extends Seeder
      */
     public function run()
     {
-        Grade::factory()->count(200)->create();
+        //Grade::factory()->count(200)->create();
     }
 }

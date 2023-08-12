@@ -1,15 +1,15 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
 use App\Actions\GetGradeTypes;
-use Illuminate\Support\Collection;
+use App\Http\Resources\ApiResource;
 
 class GradeTypesController extends Controller
 {
-    public function index(GetGradeTypes $action, ?int $gradeTypeId = null): Collection
+    public function index(GetGradeTypes $action, ?int $gradeTypeId = null): ApiResource
     {
-        return $action($gradeTypeId);
+        return new ApiResource($action($gradeTypeId));
     }
 
 }
