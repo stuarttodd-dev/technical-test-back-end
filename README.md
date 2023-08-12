@@ -94,7 +94,7 @@ composer install --ignore-platform-reqs
 - Added Auth capability (see AuthController)
 - login, register and logout routes
 - Can be tested against the /api/stu route.
-- Didn't protected the API routes as to not break the frontend
+- Didn't protect the API routes as to not break the frontend
 
 ### Postman Screenshots
 ![Endpoint 1](endpoints1.png "Endpoint 1")
